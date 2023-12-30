@@ -5,7 +5,7 @@
 4. 单元区域
 5. 边界条件
 
-## [*fluentmeshing*](https://github.com/lSereino/fluent/blob/main/fluentmeshing)
+## [*fluentmeshing*](https://github.com/lSereino/fluent/blob/main/fluentmeshing.md)
 
 1. 面网格生成
 2. 体网格生成
