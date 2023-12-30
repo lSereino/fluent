@@ -13,10 +13,10 @@ Fault-tolerant Meshing--容错网格划分：适合导入后发现面丢失等�
 # 面网格
 
 # 体网格
-polyhedra：多面体
-poly-hexcore：六面体为核心的多面体
-hexcore：六面体
-tetrahedral：四面体
+polyhedra：多面体   
+poly-hexcore：六面体为核心的多面体   
+hexcore：六面体   
+tetrahedral：四面体   
 
 # 网格质量
 
@@ -24,9 +24,10 @@ tetrahedral：四面体
 # 网格修正
 
 
-fluent转换到fluentmeshing
-'''/define/beta-feature-access
+fluent转换到fluentmeshing   
+`/define/beta-feature-access
 yes
 ok
-/switch-to-meshing-mode'''
+/switch-to-meshing-mode`
+
 
