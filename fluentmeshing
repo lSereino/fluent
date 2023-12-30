@@ -25,8 +25,8 @@ tetrahedral：四面体
 
 
 fluent转换到fluentmeshing
-/define/beta-feature-access
+`/define/beta-feature-access
 yes
 ok
-/switch-to-meshing-mode
+/switch-to-meshing-mode`
 
