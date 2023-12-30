@@ -1,4 +1,4 @@
-1.工作流程
+# 1.工作流程
 先生成面网格、再生成体网格
 
 
@@ -10,23 +10,23 @@ Fault-tolerant Meshing--容错网格划分：适合导入后发现面丢失等�
 导入几何
 
 
+# 面网格
 
-
-体网格
+# 体网格
 polyhedra：多面体
 poly-hexcore：六面体为核心的多面体
 hexcore：六面体
 tetrahedral：四面体
 
-网格质量
+# 网格质量
 
 
-网格修正
+# 网格修正
 
 
 fluent转换到fluentmeshing
-`/define/beta-feature-access
+'''/define/beta-feature-access
 yes
 ok
-/switch-to-meshing-mode`
+/switch-to-meshing-mode'''
 
