@@ -1,0 +1,64 @@
+超算使用步骤
+
+PBS文件
+#!/bin/sh -f
+#PBS -N room
+#PBS -q batch
+#PBS -l nodes=1:ppn=64
+source /public/software/intel2020u2/intel2020u2_env.sh
+nprocs=`wc -l < $PBS_NODEFILE`
+cd $PBS_O_WORKDIR
+#cat $PBS_NODEFILE > /$PBS_O_WORKDIR/nodefile
+input=test.jou
+/public/software/ansys_2021R1/v211/fluent/bin/fluent -g 3ddp -mpi=intel -t $nprocs -cnf=$PBS_NODEFILE -i $input -ssh >log.$$
+rm -rf cleanup-fluent*
+这是一个PBS作业脚本，用于在批处理环境中运行Fluent软件。以下是对脚本中各个部分的解释：
+
+● #!/bin/sh -f: 指定脚本使用的shell类型为sh，并且禁止执行默认的配置文件。
+● #PBS -N room: 设置作业名称为"room"。
+● #PBS -q batch: 设置作业队列为"batch"。
+● #PBS -l nodes=1:ppn=64: 设置使用的计算节点为1个，每个节点使用64个处理器核心。
+● source /public/software/intel2020u2/intel2020u2_env.sh: 加载Intel编译器的环境设置脚本。
+● nprocs=wc -l < $PBS_NODEFILE``: 获取计算节点文件中节点的数量，并将结果存储在变量nprocs中。
+● cd $PBS_O_WORKDIR: 切换到PBS作业的工作目录。
+● input=test.jou: 设置输入文件为"test.jou"，这是Fluent软件的命令文件。
+● /public/software/ansys_2021R1/v211/fluent/bin/fluent -g 3ddp -mpi=intel -t $nprocs -cnf=$PBS_NODEFILE -i $input -ssh >log.$$: 运行Fluent软件，并指定使用3D并行模式、Intel MPI库、使用$nprocs个处理器核心、使用PBS节点文件指定计算节点、读取输入文件"test.jou"，并将输出重定向到"log.$$"文件。
+● rm -rf cleanup-fluent*: 删除Fluent软件在运行过程中生成的临时文件。
+
+该脚本的基本流程是：加载环境设置脚本 -> 获取计算节点数量 -> 切换工作目录 -> 运行Fluent软件 -> 删除临时文件。
+
+请注意，这只是一个作业脚本示例，并不完整。你需要根据实际情况修改脚本中的路径和文件名，并确保相关软件和文件的正确性和可访问性。
+xshell
+qsub aaa.pbs       #提交名为aaa.pbs的任务
+qstat -a               #查询当前全部任务状态
+qstat -u user1     #查看指定用户的作业  
+qstat -f jobid     #查看特定作业详细信息  
+qdel -p             #强制清除某个作业号，一般不建议使用  
+
+journal文件
+/file/cff-files? NO
+/file/read-case room_inlet_air.cas
+/file/read-data room_inlet_air.dat
+/file/auto-save/data-frequency 1
+/file/auto-save/root-name 70
+/file/auto-save/append-file-name-with time-step 6
+solve/set/time-step 0.01
+solve/iterate 500
+/file/write-case room-70
+/file/write-data room-70
+exit
+yes
+● /file/cff-files? NO：询问是否有CFF文件，回答为否。
+● /file/read-case room_inlet_air.cas：读取名为room_inlet_air.cas的案例文件。
+● /file/read-data room_inlet_air.dat：读取名为room_inlet_air.dat的数据文件。
+● /file/auto-save/data-frequency 1：设置自动保存数据的频率为1。
+● /file/auto-save/root-name 70：设置自动保存的根文件名为70。
+● /file/auto-save/append-file-name-with time-step 6：设置每个时间步骤的文件名附加为时间步 6表示确认。
+● solve/set/time-step 0.01：设置求解器的时间步长为0.01。
+● solve/iterate 500：进行500次迭代求解。
+● /file/write-case room-70：将案例文件写入名为room-70的文件中。
+● /file/write-data room-70：将数据写入名为room-70的文件中。
+● exit：退出程序。
+● yes：确认退出
+fluentTUI命令
+plot-residuals 显示残差图
