@@ -1,3 +1,4 @@
+**本文主要对流体仿真做对应的介绍，大部分笔记整理于网络，仅供学习科研使用。**
 # [*fluent*](https://github.com/lSereino/fluent/blob/main/Fluent)
 1. 常用操作
 2. 模型介绍
