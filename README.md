@@ -23,3 +23,7 @@
 ## [*Super Computer*](https://github.com/lSereino/fluent/blob/main/super%20computer)
 1. PBS语法
 2. journal文件（fluent TUI命令）
+
+## [*DPM*](https://github.com/lSereino/fluent/blob/main/DPM.md)
+1.包裹   
+2.各种时间的理解
