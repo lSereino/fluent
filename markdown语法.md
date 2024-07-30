@@ -190,7 +190,7 @@
 
 图片.png
 
-### **链接图片**
+## **链接图片**
 
 给图片增加链接，请将图像的Markdown 括在方括号中，然后将链接添加在圆括号中。
 
@@ -200,4 +200,18 @@
 
 图片.png
 
-扩展语法
+# 11.表格
+添加表格需要  
+`|标题行|内容|`  
+`|---|---|`  
+`|text1|tex2|`  
+渲染效果
+|标题行|内容| 
+|---|---|  
+|text1|tex2|
+
+其中短划线可以用来控制单元格的长度
+[也可以使用在线网站生成列表，然后复制格式到md文件中](https://www.tablesgenerator.com/markdown_tables# "点击链接到达在线生成列表")  
+Markdown tables generator:https://www.tablesgenerator.com/markdown_tables#
+
+## 11.1
